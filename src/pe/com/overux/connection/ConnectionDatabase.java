@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ConnectionDatabase {
-    Connection connection;
-    public ConnectionDatabase() {
+    public static Connection getConnection() {
+        Connection connection=null;
         try {
             InitialContext context = new InitialContext();
             connection = ((DataSource) context.lookup("jdbc/MySQLDataSource"))
@@ -19,5 +19,6 @@ public class ConnectionDatabase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return connection;
     }
 }

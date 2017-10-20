@@ -17,6 +17,15 @@ public class Parametro {
         this.tipo = tipo;
     }
 
+    public Parametro(int id) {
+        this.id = id;
+    }
+
+    public Parametro(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
     public int getId() {
         return id;
     }
