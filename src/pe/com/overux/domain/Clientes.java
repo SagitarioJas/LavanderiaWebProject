@@ -27,6 +27,9 @@ public class Clientes extends  Base {
     public Clientes() {
     }
 
+    public Clientes(int id) {
+        this.id = id;
+    }
 
     public Clientes(int id, Parametro tipoCliente, String nombre, String apellidoPat, String apellidoMat, String razonSocial, Parametro tipoDocumento, String numeroDoc, Parametro estadoCivil, Date fechaRegistro, Date fechaCese, Ubigeo ubigeo, Parametro estado, String telefono, String direccion, String correo, String celular, String telefonoRef) {
         this.id = id;

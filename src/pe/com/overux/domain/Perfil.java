@@ -1,25 +1,24 @@
 package pe.com.overux.domain;
 
-public class Perfil {
+public class Perfil extends  Base {
 
-    int numPerfil;
+    int id;
     String nombre;
 
-    public Perfil(int numPerfil, String nombre) {
-        this.numPerfil = numPerfil;
+    public Perfil() {
+    }
+
+    public Perfil(int id, String nombre) {
+        this.id = id;
         this.nombre = nombre;
     }
 
-    public Perfil() {
-
+    public int getId() {
+        return id;
     }
 
-    public int getNumPerfil() {
-        return numPerfil;
-    }
-
-    public void setNumPerfil(int numPerfil) {
-        this.numPerfil = numPerfil;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {

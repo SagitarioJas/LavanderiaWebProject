@@ -2,7 +2,7 @@ package pe.com.overux.domain;
 
 import java.util.Date;
 
-public class Producto {
+public class Producto extends  Base{
 
     private int id;
     private Parametro tipoRopa = new Parametro();

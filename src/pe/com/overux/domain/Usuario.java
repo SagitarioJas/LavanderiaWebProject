@@ -1,6 +1,6 @@
 package pe.com.overux.domain;
 
-public class Usuario {
+public class Usuario extends  Base {
 
     int usuario;
     Parametro numPerfil = new Parametro();

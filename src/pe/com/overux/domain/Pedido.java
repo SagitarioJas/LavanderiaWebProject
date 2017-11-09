@@ -2,10 +2,10 @@ package pe.com.overux.domain;
 
 import java.util.Date;
 
-public class Pedido {
+public class Pedido extends  Base {
 
     Producto numProducto = new Producto();
-    Sucursales numSucursal = new Sucursales();
+    Sucursal numSucursal = new Sucursal();
     int numPedido;
     int numServicio;
     int numTotal;
@@ -18,7 +18,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Producto numProducto, Sucursales numSucursal, int numPedido, int numServicio, int numTotal, int numDescuento, int numSubtotal, int numComision, int numEstado, Date fechaEntrega) {
+    public Pedido(Producto numProducto, Sucursal numSucursal, int numPedido, int numServicio, int numTotal, int numDescuento, int numSubtotal, int numComision, int numEstado, Date fechaEntrega) {
         this.numProducto = numProducto;
         this.numSucursal = numSucursal;
         this.numPedido = numPedido;
@@ -39,11 +39,11 @@ public class Pedido {
         this.numProducto = numProducto;
     }
 
-    public Sucursales getNumSucursal() {
+    public Sucursal getNumSucursal() {
         return numSucursal;
     }
 
-    public void setNumSucursal(Sucursales numSucursal) {
+    public void setNumSucursal(Sucursal numSucursal) {
         this.numSucursal = numSucursal;
     }
 

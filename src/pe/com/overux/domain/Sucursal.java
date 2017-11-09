@@ -1,26 +1,70 @@
 package pe.com.overux.domain;
 
-public class Sucursales extends  Base {
+public class Sucursal extends  Base {
 
     private int id;
     private Clientes clientes=new Clientes();
     private String nombre;
     private String direccion;
     private Ubigeo ubigeo=new Ubigeo();
+    private Ubigeo provincia = new Ubigeo();
+    private Ubigeo departamento = new Ubigeo();
     private String telefono;
     private String celular;
+    private String horaini;
+    private String horafin;
 
-    public Sucursales() {
+    public Sucursal() {
     }
 
-    public Sucursales(int id, Clientes clientes, String nombre, String direccion, Ubigeo ubigeo, String telefono, String celular) {
+    public Sucursal(int id) {
+        this.id = id;
+    }
+
+    public Sucursal(int id, Clientes clientes, String nombre, String direccion, Ubigeo ubigeo, Ubigeo provincia, Ubigeo departamento, String telefono, String celular, String horaini, String horafin) {
         this.id = id;
         this.clientes = clientes;
         this.nombre = nombre;
         this.direccion = direccion;
         this.ubigeo = ubigeo;
+        this.provincia = provincia;
+        this.departamento = departamento;
         this.telefono = telefono;
         this.celular = celular;
+        this.horaini = horaini;
+        this.horafin = horafin;
+    }
+
+    public String getHoraini() {
+        return horaini;
+    }
+
+    public void setHoraini(String horaini) {
+        this.horaini = horaini;
+    }
+
+    public String getHorafin() {
+        return horafin;
+    }
+
+    public void setHorafin(String horafin) {
+        this.horafin = horafin;
+    }
+
+    public Ubigeo getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(Ubigeo provincia) {
+        this.provincia = provincia;
+    }
+
+    public Ubigeo getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Ubigeo departamento) {
+        this.departamento = departamento;
     }
 
     public int getId() {

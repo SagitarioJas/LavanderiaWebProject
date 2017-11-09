@@ -1,4 +1,12 @@
 package pe.com.overux.model;
 
-public class FactoryDao {
+import java.io.Serializable;
+
+public class FactoryDao  {
+    private static FactoryDao singleton = null;
+
+    public FactoryDao() {
+    }
+
+
 }
