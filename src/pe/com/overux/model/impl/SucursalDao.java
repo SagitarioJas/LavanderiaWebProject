@@ -1,10 +1,10 @@
 package pe.com.overux.model.impl;
 
 import pe.com.overux.connection.ConnectionDatabase;
-import pe.com.overux.domain.Clientes;
+import pe.com.overux.domain.Cliente;
 import pe.com.overux.domain.Sucursal;
 import pe.com.overux.domain.Ubigeo;
-import pe.com.overux.model.iface.ISucursales;
+import pe.com.overux.model.iface.ISucursal;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SucursalDao implements ISucursales {
+public class SucursalDao implements ISucursal {
     @Override
     public String insert(Sucursal clientes) {
         return null;
@@ -70,8 +70,8 @@ public class SucursalDao implements ISucursales {
                         + "a.c_hora_final "
                         + "from tab_sucursal a "
                         + "left join mae_ubigeo b on a.c_ubigeo = b.c_ubigeo_pk ";
-                if (clientes.getClientes().getId() != 0) {
-                    sql += "where n_cliente = " + clientes.getClientes().getId();
+                if (clientes.getCliente().getId() != 0) {
+                    sql += "where n_cliente = " + clientes.getCliente().getId();
                 }
                 PreparedStatement ps = c.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
@@ -79,7 +79,7 @@ public class SucursalDao implements ISucursales {
                 while (rs.next()) {
                     oSucursal = new Sucursal();
                     oSucursal.setId(rs.getInt("n_sucursal_pk"));
-                    oSucursal.setClientes(new Clientes(rs.getInt("n_cliente")));
+                    oSucursal.setCliente(new Cliente(rs.getInt("n_cliente")));
                     oSucursal.setNombre(rs.getString("c_nombre"));
                     oSucursal.setDireccion(rs.getString("c_direccion"));
                     if (rs.getString("c_ubigeo") != null) {
@@ -132,20 +132,20 @@ public class SucursalDao implements ISucursales {
                         + "where ";
                 if (clientes.getId() != 0) {
                     sql = sql + " a.n_sucursal_pk=? ";
-                }  else if (clientes.getClientes().getId() != 0) {
+                }  else if (clientes.getCliente().getId() != 0) {
                     sql = sql + " a.n_socio_negocio=? ";
                 }
                 PreparedStatement ps = c.prepareStatement(sql);
                 if (clientes.getId() != 0) {
                     ps.setInt(1, clientes.getId());
-                } else if (clientes.getClientes().getId() != 0) {
-                    ps.setInt(1, clientes.getClientes().getId());
+                } else if (clientes.getCliente().getId() != 0) {
+                    ps.setInt(1, clientes.getCliente().getId());
                 }
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
                     oSucursal = new Sucursal();
                     oSucursal.setId(rs.getInt("n_sucursal_pk"));
-                    oSucursal.setClientes(new Clientes(rs.getInt("n_cliente")));
+                    oSucursal.setCliente(new Cliente(rs.getInt("n_cliente")));
                     oSucursal.setNombre(rs.getString("c_nombre"));
                     oSucursal.setDireccion(rs.getString("c_direccion"));
                     if (rs.getString("c_ubigeo") != null) {

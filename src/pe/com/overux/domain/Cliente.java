@@ -2,7 +2,7 @@ package pe.com.overux.domain;
 
 import java.util.Date;
 
-public class Clientes extends  Base {
+public class Cliente extends  Base {
 
     private int id;
     private Parametro tipoCliente = new Parametro();
@@ -24,14 +24,14 @@ public class Clientes extends  Base {
     private String telefonoRef;
 
 
-    public Clientes() {
+    public Cliente() {
     }
 
-    public Clientes(int id) {
+    public Cliente(int id) {
         this.id = id;
     }
 
-    public Clientes(int id, Parametro tipoCliente, String nombre, String apellidoPat, String apellidoMat, String razonSocial, Parametro tipoDocumento, String numeroDoc, Parametro estadoCivil, Date fechaRegistro, Date fechaCese, Ubigeo ubigeo, Parametro estado, String telefono, String direccion, String correo, String celular, String telefonoRef) {
+    public Cliente(int id, Parametro tipoCliente, String nombre, String apellidoPat, String apellidoMat, String razonSocial, Parametro tipoDocumento, String numeroDoc, Parametro estadoCivil, Date fechaRegistro, Date fechaCese, Ubigeo ubigeo, Parametro estado, String telefono, String direccion, String correo, String celular, String telefonoRef) {
         this.id = id;
         this.tipoCliente = tipoCliente;
         this.nombre = nombre;

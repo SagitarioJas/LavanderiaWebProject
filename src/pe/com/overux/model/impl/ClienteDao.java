@@ -1,9 +1,9 @@
 package pe.com.overux.model.impl;
 
-import pe.com.overux.domain.Clientes;
+import pe.com.overux.domain.Cliente;
 import pe.com.overux.domain.Parametro;
 import pe.com.overux.domain.Ubigeo;
-import pe.com.overux.model.iface.IClientes;
+import pe.com.overux.model.iface.ICliente;
 import pe.com.overux.connection.ConnectionDatabase;
 
 import java.sql.Connection;
@@ -11,13 +11,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.sql.Date;
 
-public class ClienteDao implements IClientes {
+public class ClienteDao implements ICliente {
 
     @Override
-    public String insert(Clientes clientes) {
+    public String insert(Cliente cliente) {
         Connection c = null;
         c = ConnectionDatabase.getConnection();
         if (c != null) {
@@ -47,42 +46,42 @@ public class ClienteDao implements IClientes {
                         + " values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,current_timestamp)";
                 int i = 1;
                 PreparedStatement ps = c.prepareStatement(sql);
-                ps.setInt(i++, clientes.getId());
-                if (clientes.getTipoCliente().getId() != 0) {
-                    ps.setInt(i++, clientes.getTipoCliente().getId());
+                ps.setInt(i++, cliente.getId());
+                if (cliente.getTipoCliente().getId() != 0) {
+                    ps.setInt(i++, cliente.getTipoCliente().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setString(i++, clientes.getNombre());
-                ps.setString(i++, clientes.getApellidoPat());
-                ps.setString(i++, clientes.getApellidoMat());
-                ps.setString(i++, clientes.getRazonSocial());
-                if (clientes.getTipoDocumento().getId() != 0) {
-                    ps.setInt(i++, clientes.getTipoDocumento().getId());
+                ps.setString(i++, cliente.getNombre());
+                ps.setString(i++, cliente.getApellidoPat());
+                ps.setString(i++, cliente.getApellidoMat());
+                ps.setString(i++, cliente.getRazonSocial());
+                if (cliente.getTipoDocumento().getId() != 0) {
+                    ps.setInt(i++, cliente.getTipoDocumento().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setString(i++, clientes.getNumeroDoc());
+                ps.setString(i++, cliente.getNumeroDoc());
 
-                if (clientes.getEstadoCivil().getId() != 0) {
-                    ps.setInt(i++, clientes.getEstadoCivil().getId());
+                if (cliente.getEstadoCivil().getId() != 0) {
+                    ps.setInt(i++, cliente.getEstadoCivil().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setDate(i++, (clientes.getFechaRegistro() != null ? new Date(clientes.getFechaRegistro().getTime()) : null));
-                ps.setDate(i++, (clientes.getFechaCese() != null ? new Date(clientes.getFechaCese().getTime()) : null));
-                ps.setString(i++, clientes.getUbigeo().getCodigo());
-                if (clientes.getEstado().getId() != 0) {
-                    ps.setInt(i++, clientes.getEstado().getId());
+                ps.setDate(i++, (cliente.getFechaRegistro() != null ? new Date(cliente.getFechaRegistro().getTime()) : null));
+                ps.setDate(i++, (cliente.getFechaCese() != null ? new Date(cliente.getFechaCese().getTime()) : null));
+                ps.setString(i++, cliente.getUbigeo().getCodigo());
+                if (cliente.getEstado().getId() != 0) {
+                    ps.setInt(i++, cliente.getEstado().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setString(i++, clientes.getTelefono());
-                ps.setString(i++, clientes.getDireccion());
-                ps.setString(i++, clientes.getCorreo());
-                ps.setString(i++, clientes.getCelular());
-                ps.setString(i++, clientes.getTelefonoRef());
-                ps.setInt(i++, clientes.getUsuarioCreacion());
+                ps.setString(i++, cliente.getTelefono());
+                ps.setString(i++, cliente.getDireccion());
+                ps.setString(i++, cliente.getCorreo());
+                ps.setString(i++, cliente.getCelular());
+                ps.setString(i++, cliente.getTelefonoRef());
+                ps.setInt(i++, cliente.getUsuarioCreacion());
                 ps.executeUpdate();
                 c.commit();
             } catch (SQLException ex) {
@@ -106,7 +105,7 @@ public class ClienteDao implements IClientes {
     }
 
     @Override
-    public String update(Clientes clientes) {
+    public String update(Cliente cliente) {
         Connection c = ConnectionDatabase.getConnection();
         if (c != null) {
             try {
@@ -134,42 +133,42 @@ public class ClienteDao implements IClientes {
                         + " where n_cliente_pk=?";
                 PreparedStatement ps = c.prepareStatement(sql);
                 int i = 1;
-                if (clientes.getTipoCliente().getId() != 0) {
-                    ps.setInt(i++, clientes.getTipoCliente().getId());
+                if (cliente.getTipoCliente().getId() != 0) {
+                    ps.setInt(i++, cliente.getTipoCliente().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setString(i++, clientes.getNombre());
-                ps.setString(i++, clientes.getApellidoPat());
-                ps.setString(i++, clientes.getApellidoMat());
-                ps.setString(i++, clientes.getRazonSocial());
-                if (clientes.getTipoDocumento().getId() != 0) {
-                    ps.setInt(i++, clientes.getTipoDocumento().getId());
+                ps.setString(i++, cliente.getNombre());
+                ps.setString(i++, cliente.getApellidoPat());
+                ps.setString(i++, cliente.getApellidoMat());
+                ps.setString(i++, cliente.getRazonSocial());
+                if (cliente.getTipoDocumento().getId() != 0) {
+                    ps.setInt(i++, cliente.getTipoDocumento().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setString(i++, clientes.getNumeroDoc());
+                ps.setString(i++, cliente.getNumeroDoc());
 
-                if (clientes.getEstadoCivil().getId() != 0) {
-                    ps.setInt(i++, clientes.getEstadoCivil().getId());
+                if (cliente.getEstadoCivil().getId() != 0) {
+                    ps.setInt(i++, cliente.getEstadoCivil().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setDate(i++, (clientes.getFechaRegistro() != null ? new Date(clientes.getFechaRegistro().getTime()) : null));
-                ps.setDate(i++, (clientes.getFechaCese() != null ? new Date(clientes.getFechaCese().getTime()) : null));
-                ps.setString(i++, clientes.getUbigeo().getCodigo());
-                if (clientes.getEstado().getId() != 0) {
-                    ps.setInt(i++, clientes.getEstado().getId());
+                ps.setDate(i++, (cliente.getFechaRegistro() != null ? new Date(cliente.getFechaRegistro().getTime()) : null));
+                ps.setDate(i++, (cliente.getFechaCese() != null ? new Date(cliente.getFechaCese().getTime()) : null));
+                ps.setString(i++, cliente.getUbigeo().getCodigo());
+                if (cliente.getEstado().getId() != 0) {
+                    ps.setInt(i++, cliente.getEstado().getId());
                 } else {
                     ps.setNull(i++, java.sql.Types.INTEGER);
                 }
-                ps.setString(i++, clientes.getTelefono());
-                ps.setString(i++, clientes.getDireccion());
-                ps.setString(i++, clientes.getCorreo());
-                ps.setString(i++, clientes.getCelular());
-                ps.setString(i++, clientes.getTelefonoRef());
-                ps.setInt(i++, clientes.getUsuarioModificacion());
-                ps.setInt(i++, clientes.getId());
+                ps.setString(i++, cliente.getTelefono());
+                ps.setString(i++, cliente.getDireccion());
+                ps.setString(i++, cliente.getCorreo());
+                ps.setString(i++, cliente.getCelular());
+                ps.setString(i++, cliente.getTelefonoRef());
+                ps.setInt(i++, cliente.getUsuarioModificacion());
+                ps.setInt(i++, cliente.getId());
                 ps.executeUpdate();
                 c.commit();
             } catch (SQLException ex) {
@@ -193,7 +192,7 @@ public class ClienteDao implements IClientes {
     }
 
     @Override
-    public String delete(Clientes clientes) {
+    public String delete(Cliente cliente) {
         Connection c = ConnectionDatabase.getConnection();
         if (c != null) {
             try {
@@ -201,7 +200,7 @@ public class ClienteDao implements IClientes {
                 String sql = "delete from  tab_cliente "
                         + "where n_cliente_pk=?";
                 PreparedStatement ps = c.prepareStatement(sql);
-                ps.setInt(1, clientes.getId());
+                ps.setInt(1, cliente.getId());
                 ps.executeUpdate();
                 c.commit();
             } catch (SQLException ex) {
@@ -226,10 +225,10 @@ public class ClienteDao implements IClientes {
     }
 
     @Override
-    public ArrayList<Clientes> listar(Clientes clientes) {
+    public ArrayList<Cliente> listar(Cliente cliente) {
         Connection c = ConnectionDatabase.getConnection();
-        Clientes e = null;
-        ArrayList<Clientes> Empleado = new ArrayList<>();
+        Cliente e = null;
+        ArrayList<Cliente> Empleado = new ArrayList<>();
         if (c != null) {
             try {
                 String sql = "Select "
@@ -256,7 +255,7 @@ public class ClienteDao implements IClientes {
                 PreparedStatement ps = c.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    e = new Clientes();
+                    e = new Cliente();
                     e.setId(rs.getInt("n_cliente_pk"));
                     e.setTipoCliente(new Parametro(rs.getInt("n_tipo_cliente")));
                     e.setNombre(rs.getString("c_nombres"));
@@ -296,9 +295,9 @@ public class ClienteDao implements IClientes {
     }
 
     @Override
-    public Clientes get(Clientes clientes) {
+    public Cliente get(Cliente cliente) {
         Connection c = ConnectionDatabase.getConnection();
-        Clientes e = null;
+        Cliente e = null;
         if (c != null) {
             try {
                 String sql = "Select "
@@ -322,10 +321,10 @@ public class ClienteDao implements IClientes {
                         + "c_telefono_referencia,"
                         + " From tab_cliente where n_cliente_pk=?";
                 PreparedStatement ps = c.prepareStatement(sql);
-                ps.setInt(1, clientes.getId());
+                ps.setInt(1, cliente.getId());
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    e = new Clientes();
+                    e = new Cliente();
                     e.setId(rs.getInt("n_cliente_pk"));
                     e.setTipoCliente(new Parametro(rs.getInt("n_tipo_cliente")));
                     e.setNombre(rs.getString("c_nombres"));

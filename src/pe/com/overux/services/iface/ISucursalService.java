@@ -1,9 +1,10 @@
-package pe.com.overux.model.iface;
+package pe.com.overux.services.iface;
 
 import pe.com.overux.domain.Sucursal;
+
 import java.util.ArrayList;
 
-public interface ISucursales {
+public interface ISucursalService {
 
     public String insert(Sucursal clientes);
     public String update(Sucursal clientes);

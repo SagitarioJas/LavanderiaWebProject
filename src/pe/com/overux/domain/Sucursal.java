@@ -3,7 +3,7 @@ package pe.com.overux.domain;
 public class Sucursal extends  Base {
 
     private int id;
-    private Clientes clientes=new Clientes();
+    private Cliente cliente =new Cliente();
     private String nombre;
     private String direccion;
     private Ubigeo ubigeo=new Ubigeo();
@@ -21,9 +21,9 @@ public class Sucursal extends  Base {
         this.id = id;
     }
 
-    public Sucursal(int id, Clientes clientes, String nombre, String direccion, Ubigeo ubigeo, Ubigeo provincia, Ubigeo departamento, String telefono, String celular, String horaini, String horafin) {
+    public Sucursal(int id, Cliente cliente, String nombre, String direccion, Ubigeo ubigeo, Ubigeo provincia, Ubigeo departamento, String telefono, String celular, String horaini, String horafin) {
         this.id = id;
-        this.clientes = clientes;
+        this.cliente = cliente;
         this.nombre = nombre;
         this.direccion = direccion;
         this.ubigeo = ubigeo;
@@ -75,12 +75,12 @@ public class Sucursal extends  Base {
         this.id = id;
     }
 
-    public Clientes getClientes() {
-        return clientes;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClientes(Clientes clientes) {
-        this.clientes = clientes;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public String getNombre() {

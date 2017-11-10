@@ -1,5 +1,8 @@
 package pe.com.overux.services;
 
+import pe.com.overux.services.iface.IClienteService;
+import pe.com.overux.services.impl.ClienteService;
+
 public class FactoryService {
 
     private static FactoryService singleton = null;
@@ -15,7 +18,9 @@ public class FactoryService {
         return singleton;
     }
 
-
+    public IClienteService getClienteService() {
+        return new ClienteService();
+    }
 
 
 

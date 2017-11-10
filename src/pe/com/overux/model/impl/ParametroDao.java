@@ -14,6 +14,26 @@ import java.util.List;
 public class ParametroDao implements IParametro {
 
     @Override
+    public String insert(Parametro opcion) {
+        return null;
+    }
+
+    @Override
+    public String update(Parametro opcion) {
+        return null;
+    }
+
+    @Override
+    public String delete(Parametro opcion) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<Parametro> listar(Parametro opcion) {
+        return null;
+    }
+
+    @Override
     public List<Parametro> list(Parametro p) {
         Connection c= ConnectionDatabase.getConnection();
         List<Parametro> lst=null;
