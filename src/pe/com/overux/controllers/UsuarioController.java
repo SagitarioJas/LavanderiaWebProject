@@ -1,6 +1,7 @@
 package pe.com.overux.controllers;
 
-import pe.com.overux.domain.Cliente;
+import pe.com.overux.domain.Pedido;
+import pe.com.overux.domain.Usuario;
 import pe.com.overux.services.FactoryService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,16 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@javax.servlet.annotation.WebServlet(name = "ClienteController", urlPatterns = "/clientes")
-
-public class ClienteController {
+@javax.servlet.annotation.WebServlet(name = "UsuarioController", urlPatterns = "/usuario")
+public class UsuarioController {
     private FactoryService fs;
-    private Cliente cliente;
+    private Usuario usuario;
     private boolean edit;
 
     String url;
 
-    public ClienteController() {
+    public UsuarioController() {
         super();
         fs = FactoryService.getInstance();
         url = "";
@@ -41,56 +41,53 @@ public class ClienteController {
         if(method.equals("GET")) {
             // action == index
             if(action.equals("index")) {
-                List<Cliente> clientes = fs.getClienteService().listar(cliente);
-                request.setAttribute("clientes", clientes);
-                url = "listClientes.jsp";
+                List<Usuario> usuarios = fs.getUsuarioService().listar(usuario);
+                request.setAttribute("usuarios", usuarios);
+                url = "listUsuarios.jsp";
             }
             //action == show
             if(action.equals("show")) {
-                cliente.setId(Integer.parseInt(request.getParameter("id")));
-                cliente = fs.getClienteService().get(cliente);
-                request.setAttribute("cliente", cliente);
-                url = "showCliente.jsp";
+                usuario.setUsuario(Integer.parseInt(request.getParameter("id")));
+                usuario = fs.getUsuarioService().get(usuario);
+                request.setAttribute("usuario", usuario);
+                url = "showUsuarios.jsp";
             }
             // action == new
             if(action.equals("new")) {
-                url = "newCliente.jsp";
+                url = "newUsuario.jsp";
             }
             // action == edit
             if(action.equals("edit")) {
-                cliente.setId(Integer.parseInt(request.getParameter("id")));
-                cliente = fs.getClienteService().get(cliente);
-                request.setAttribute("cliente", cliente);
-                url = "editCliente.jsp";
+                usuario.setUsuario(Integer.parseInt(request.getParameter("id")));
+                usuario = fs.getUsuarioService().get(usuario);
+                request.setAttribute("usuario", usuario);
+                url = "editUsuario.jsp";
             }
         }
         if(method.equals("POST")) {
             // action == create
             if(action.equals("create")) {
-                Cliente cliente = new Cliente();
-                cliente .setApellidoMat(request.getParameter("apellidoMat"));
-                cliente.setNombre(request.getParameter("nomMat"));
-                fs.getClienteService().insert(cliente);
-                List<Cliente> clientes = fs.getClienteService().listar(cliente);
-                request.setAttribute("clientes", clientes);
-                url = "listClientes.jsp";
+                Usuario usuario = new Usuario();
+                usuario.setNombre(request.getParameter("fecha"));
+                usuario.setClave(request.getParameter("numero"));
+                fs.getUsuarioService().insert(usuario);
+                List<Usuario> usuarios = fs.getUsuarioService().listar(usuario);
+                request.setAttribute("usuarios", usuarios);
+                url = "listUsuarios.jsp";
             }
             // action == update
             if(action.equals("update")) {
-                Cliente cliente = new Cliente();
-                cliente .setApellidoMat(request.getParameter("apellidoMat"));
-                cliente.setNombre(request.getParameter("nomMat"));
-                fs.getClienteService().update(cliente);
-                List<Cliente> clientes = fs.getClienteService().listar(cliente);
-                request.setAttribute("clientes", clientes);
-                url = "listClientes.jsp";
+                Usuario usuario = new Usuario();
+                usuario.setNombre(request.getParameter("fecha"));
+                usuario.setClave(request.getParameter("numero"));
+                fs.getUsuarioService().update(usuario);
+                List<Usuario> usuarios = fs.getUsuarioService().listar(usuario);
+                request.setAttribute("usuarios", usuarios);
+                url = "listUsuarios.jsp";
             }
 
         }
 
         request.getRequestDispatcher(url).forward(request, response);
     }
-
-
-
 }
