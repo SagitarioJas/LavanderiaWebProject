@@ -59,7 +59,7 @@ public class Pedido extends  Base {
         return numServicio;
     }
 
-    public void setNumServicio(int numServicio) {
+    public void setNumServicio(String numServicio) {
         this.numServicio = numServicio;
     }
 
@@ -107,7 +107,7 @@ public class Pedido extends  Base {
         return fechaEntrega;
     }
 
-    public void setFechaEntrega(Date fechaEntrega) {
+    public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 }
