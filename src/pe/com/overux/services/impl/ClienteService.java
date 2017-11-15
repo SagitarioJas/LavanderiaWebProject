@@ -16,26 +16,30 @@ public class ClienteService implements IClienteService {
 
     @Override
     public String insert(Cliente cliente) {
-        return null;
+        return dao.getClienteDao().insert(cliente);
     }
 
     @Override
     public String update(Cliente cliente) {
-        return null;
+
+        return dao.getClienteDao().update(cliente);
     }
 
     @Override
     public String delete(Cliente cliente) {
-        return null;
+
+        return dao.getClienteDao().delete(cliente);
     }
 
     @Override
     public ArrayList<Cliente> listar(Cliente cliente) {
-        return null;
+
+        return dao.getClienteDao().listar(cliente);
     }
 
     @Override
     public Cliente get(Cliente cliente) {
-        return null;
+
+        return dao.getClienteDao().get(cliente);
     }
 }
