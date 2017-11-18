@@ -59,8 +59,12 @@ public class Pedido extends  Base {
         return numServicio;
     }
 
-    public void setNumServicio(String numServicio) {
+    public void setNumServicio(int numServicio) {
         this.numServicio = numServicio;
+    }
+
+    public void setFechaEntrega(Date fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
     }
 
     public int getNumTotal() {
@@ -103,11 +107,5 @@ public class Pedido extends  Base {
         this.numEstado = numEstado;
     }
 
-    public Date getFechaEntrega() {
-        return fechaEntrega;
-    }
 
-    public void setFechaEntrega(String fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
-    }
 }

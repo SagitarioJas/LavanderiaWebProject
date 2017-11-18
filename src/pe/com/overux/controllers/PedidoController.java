@@ -8,6 +8,9 @@ import pe.com.overux.services.FactoryService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @javax.servlet.annotation.WebServlet(name = "PedidoController", urlPatterns = "/pedido")
@@ -24,19 +27,19 @@ public class PedidoController {
         url = "";
     }
 
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException, ParseException {
         processRequest("POST", request, response);
     }
 
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException, ParseException {
         processRequest("GET", request, response);
     }
 
     private void processRequest(String method,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-            throws javax.servlet.ServletException, IOException {
+            throws javax.servlet.ServletException, IOException, ParseException {
 
         String action = request.getParameter("action");
         if(method.equals("GET")) {
@@ -69,8 +72,9 @@ public class PedidoController {
             // action == create
             if(action.equals("create")) {
                 Pedido pedido = new Pedido();
-                pedido.setFechaEntrega(request.getParameter("fecha"));
-                pedido.setNumServicio(request.getParameter("numero"));
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+                pedido.setFechaEntrega(formatoDelTexto.parse(request.getParameter("fecha")));
+                pedido.setNumServicio(Integer.parseInt(request.getParameter("numero")));
                 fs.getPedidoService().insert(pedido);
                 List<Pedido> pedidos = fs.getPedidoService().listar(pedido);
                 request.setAttribute("pedido", pedidos);
@@ -79,8 +83,9 @@ public class PedidoController {
             // action == update
             if(action.equals("update")) {
                 Pedido pedido = new Pedido();
-                pedido.setFechaEntrega(request.getParameter("fecha"));
-                pedido.setNumServicio(request.getParameter("numero"));
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+                pedido.setFechaEntrega(formatoDelTexto.parse(request.getParameter("fecha")));
+                pedido.setNumServicio(Integer.parseInt(request.getParameter("numero")));
                 fs.getPedidoService().update(pedido);
                 List<Pedido> pedidos = fs.getPedidoService().listar(pedido);
                 request.setAttribute("pedido", pedidos);
