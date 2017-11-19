@@ -29,6 +29,7 @@
       </nav>
     </div>
     <img class="logo" src="img/logo.png">
+    <img class="logo" src="img/logo1.png">
     <img class="red_social" src="img/fb.png">
     <img class="red_social" src="img/tw.png">
     <img class="red_social" src="img/yt.png">
