@@ -47,6 +47,8 @@
     <article>    </article>
   </div>
   <footer>
+    <p>2017 <img src="img/logo2.png"> | Esquina Av 28 Julio con Av Petit Thouars | Telf. (51)315-9600 | info@fastlaundry.com </p>
+    <p><a href="#">Aviso Legal</a> | <a href="#">Politica de Privacidad</a> | <a href="#">Política de cookies</a></p>
     <p>Derechos Reservados</p>
   </footer>
   </body>
