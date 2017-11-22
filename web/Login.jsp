@@ -8,14 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>FastLaundy/Login</title>
+    <link href="estilo.css" rel="stylesheet">
 </head>
 <body>
-<table  align="center"  height=100% widht=100%>
-    <tr align="center"  bottom="middle">
+<header>
+    <div class="cabecera">
+        <img src = "img/logo.png"> <img src="img/logo1.png">
+    </div>
+</header>
+<div class="limpiar"></div>
+<table align="center">
+    <tr   bottom="middle">
         <td>
         <form method="post" action="checklogin.php" >
-            <table cellpadding="0" cellspacing="0" border="0" align="center">
+            <table cellpadding="3" cellspacing="3" border="0" >
                 <tr>
                     <td><input type="text" placeholder="Usuario" name="username" id="username" /></td>
                 </tr>
